@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Kvl框架API 接口文档',  // 设置网站标题
   description : 'Adroi',
-  base : '/v1',
+  base : './',
   themeConfig : {
     nav : [
         { text: 'github', link: 'https://github.com/maskletter/Kvl' },

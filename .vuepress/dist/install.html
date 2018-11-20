@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kvl | Kvl框架API 接口文档</title>
+    <meta name="description" content="Adroi">
+    
+    
+    <link rel="preload" href="/v1/assets/css/0.styles.08882003.css" as="style"><link rel="preload" href="/v1/assets/js/app.e5f33892.js" as="script"><link rel="preload" href="/v1/assets/js/7.577d7085.js" as="script"><link rel="prefetch" href="/v1/assets/js/2.546bd74f.js"><link rel="prefetch" href="/v1/assets/js/3.bd0d7c96.js"><link rel="prefetch" href="/v1/assets/js/4.7113a08d.js"><link rel="prefetch" href="/v1/assets/js/5.2028fcc8.js"><link rel="prefetch" href="/v1/assets/js/6.d5cbeccb.js"><link rel="prefetch" href="/v1/assets/js/8.0df3c8b8.js"><link rel="prefetch" href="/v1/assets/js/9.88fcb229.js">
+    <link rel="stylesheet" href="/v1/assets/css/0.styles.08882003.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/v1/" class="home-link router-link-active"><!----> <span class="site-name">Kvl框架API 接口文档</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/maskletter/Kvl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/maskletter/Kvl-demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  演示项目源码
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/maskletter/Kvl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/maskletter/Kvl-demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  演示项目源码
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>初始化</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/v1/install.html" class="active sidebar-link">初始化安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/v1/install.html#kvl" class="sidebar-link">Kvl</a></li></ul></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading"><span>Api说明</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/v1/init.html" class="sidebar-link">方法说明</a></li><li><a href="/v1/ts.html" class="sidebar-link">ts类说明</a></li><li><a href="/v1/cli.html" class="sidebar-link">kvl cli使用</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h2 id="kvl"><a href="#kvl" aria-hidden="true" class="header-anchor">#</a> Kvl</h2> <p>kvl利用typescript简单封装了express，typescript的数据强类型，弥补了js在类型方面的弱项。</p> <br> <p>通过Npm 方式安装kvl</p> <div class="language- extra-class"><pre class="language-text"><code>npm install kvl@latest -g
+</code></pre></div><br> <p>基础方式使用</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> Kvl <span class="token keyword">from</span> <span class="token string">'kvl'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MainKvl <span class="token punctuation">,</span>Router<span class="token punctuation">,</span> config<span class="token punctuation">,</span> ValidationDone <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'kvl'</span><span class="token punctuation">;</span>
+@<span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 
+<span class="token keyword">class</span> <span class="token class-name">HelloWord</span><span class="token punctuation">{</span>
+
+	<span class="token keyword">private</span> msg<span class="token punctuation">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">'Hello, world'</span>
+
+	@<span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">:</span> <span class="token string">'/hello'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'get'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">private</span> <span class="token function">hello</span><span class="token punctuation">(</span>req<span class="token punctuation">:</span> Kvl<span class="token punctuation">.</span>Request<span class="token punctuation">,</span> res<span class="token punctuation">:</span> Kvl<span class="token punctuation">.</span>Response<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+		res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`&lt;h1&gt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/h1&gt;`</span></span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> app<span class="token punctuation">,</span> httpServer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">MainKvl</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	port<span class="token punctuation">:</span> <span class="token number">8080</span><span class="token punctuation">,</span>
+	router<span class="token punctuation">:</span> <span class="token punctuation">[</span> HelloWord <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/v1/init.html">
+          方法说明
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/v1/assets/js/7.577d7085.js" defer></script><script src="/v1/assets/js/app.e5f33892.js" defer></script>
+  </body>
+</html>

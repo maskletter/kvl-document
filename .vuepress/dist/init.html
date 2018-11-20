@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MainKvl | Kvl框架API 接口文档</title>
+    <meta name="description" content="Adroi">
+    
+    
+    <link rel="preload" href="/v1/assets/css/0.styles.08882003.css" as="style"><link rel="preload" href="/v1/assets/js/app.e5f33892.js" as="script"><link rel="preload" href="/v1/assets/js/6.d5cbeccb.js" as="script"><link rel="prefetch" href="/v1/assets/js/2.546bd74f.js"><link rel="prefetch" href="/v1/assets/js/3.bd0d7c96.js"><link rel="prefetch" href="/v1/assets/js/4.7113a08d.js"><link rel="prefetch" href="/v1/assets/js/5.2028fcc8.js"><link rel="prefetch" href="/v1/assets/js/7.577d7085.js"><link rel="prefetch" href="/v1/assets/js/8.0df3c8b8.js"><link rel="prefetch" href="/v1/assets/js/9.88fcb229.js">
+    <link rel="stylesheet" href="/v1/assets/css/0.styles.08882003.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/v1/" class="home-link router-link-active"><!----> <span class="site-name">Kvl框架API 接口文档</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/maskletter/Kvl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/maskletter/Kvl-demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  演示项目源码
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/maskletter/Kvl" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/maskletter/Kvl-demo" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  演示项目源码
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading"><span>初始化</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/v1/install.html" class="sidebar-link">初始化安装</a></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>Api说明</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/v1/init.html" class="active sidebar-link">方法说明</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/v1/init.html#mainkvl" class="sidebar-link">MainKvl</a></li><li class="sidebar-sub-header"><a href="/v1/init.html#router" class="sidebar-link">Router</a></li><li class="sidebar-sub-header"><a href="/v1/init.html#config" class="sidebar-link">config</a></li></ul></li><li><a href="/v1/ts.html" class="sidebar-link">ts类说明</a></li><li><a href="/v1/cli.html" class="sidebar-link">kvl cli使用</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h2 id="mainkvl"><a href="#mainkvl" aria-hidden="true" class="header-anchor">#</a> MainKvl</h2> <p>Kvl框架启动总入口，一个项目初始化一个kvl服务</p> <br> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MainKvl <span class="token punctuation">,</span>Router<span class="token punctuation">,</span> config<span class="token punctuation">,</span> ValidationDone <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'kvl'</span><span class="token punctuation">;</span>
+
+<span class="token function">MainKvl</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	port<span class="token punctuation">:</span> <span class="token number">8080</span><span class="token punctuation">,</span>
+	router<span class="token punctuation">:</span> <span class="token punctuation">[</span> HelloWord <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>MainKvl返回包含三个参数</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> Kvl <span class="token keyword">from</span> <span class="token string">'kvl'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> MainKvlConfig <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> app<span class="token punctuation">,</span> httpServer<span class="token punctuation">,</span> httpsServer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">MainKvl</span><span class="token punctuation">(</span>MainKvlConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//app为kvl内部创建的express()对象，方便使用者绕过kvl直接调用express</span>
+<span class="token comment">//httpServer为通过http.createServer创建的http对象</span>
+<span class="token comment">//httpsServer为通过https.createServer创建的https对象(注意，如果为MainKvl配置了https才会返回该对象)</span>
+
+</code></pre></div><p>MainKvl参数说明</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> MainKvlConfig<span class="token punctuation">:</span> Kvl<span class="token punctuation">.</span>InitConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+	port<span class="token punctuation">:</span> <span class="token number">8080</span><span class="token punctuation">,</span>						<span class="token comment">//服务端口号</span>
+	baseUrl<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>					<span class="token comment">//服务下所有路由根路径</span>
+	router<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>						<span class="token comment">//路由class对象，@Router生成</span>
+	use<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>						<span class="token comment">//express的use方法数组</span>
+	<span class="token keyword">static</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>						<span class="token comment">//静态服务器，未设置则不启用</span>
+	https<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>						<span class="token comment">//https参数，详见Https.createServer</span>
+	interceptor<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>		<span class="token comment">//全局拦截器</span>
+	useThis<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>					<span class="token comment">//class方法内的this对象是否指向当前的class，通过apply实现</span>
+	<span class="token keyword">throw</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> 			<span class="token comment">//处理服务接口内的错误</span>
+<span class="token punctuation">}</span>
+MainKvlConfig<span class="token punctuation">.</span><span class="token function-variable function">throw</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>request<span class="token punctuation">:</span> Kvl<span class="token punctuation">.</span>Request<span class="token punctuation">,</span> response<span class="token punctuation">:</span> Kvl<span class="token punctuation">.</span>Response<span class="token punctuation">,</span> status<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> error<span class="token punctuation">:</span> Error<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * status为错误的状态码,默认为500，如果想自行设置可以通过-&gt;
+	 * 			throw { status: 400, error: new Error('发生了错误') }
+	 * 		---&gt;来设置状态码
+	 * error为抛出的错误异常
+	 */</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="router"><a href="#router" aria-hidden="true" class="header-anchor">#</a> Router</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+@<span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	name<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>						<span class="token comment">//类的名字，区分定义使用</span>
+	url<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>						<span class="token comment">//类下所有包括router下的请求都会带有此url</span>
+	router<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>						<span class="token comment">//路由class对象，@Router生成</span>
+	interceptor<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>		<span class="token comment">//类拦截器</span>
+	interceptorLevel<span class="token punctuation">:</span> <span class="token number">1</span>				<span class="token comment">//是否禁用全局拦截器，1为禁止，默认不禁止</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+</code></pre></div><h2 id="config"><a href="#config" aria-hidden="true" class="header-anchor">#</a> config</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code>
+@<span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	name<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>						<span class="token comment">//请求的名字，区分定义使用</span>
+	url<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>						<span class="token comment">//请求的url</span>
+	<span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>					<span class="token comment">//请求的方式</span>
+	interceptor<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>		<span class="token comment">//拦截器</span>
+	interceptorLevel<span class="token punctuation">:</span> <span class="token number">1</span>				<span class="token comment">//是否拦截器，1为抛弃全局得拦截器,2为抛弃所在class得拦截器和全局得拦截器,3为抛弃所在class得拦截器，但是保留全局得拦截器</span>
+	validation<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> 					数据效验器，验证数据是否正确
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/v1/install.html" class="prev">
+          初始化安装
+        </a></span> <span class="next"><a href="/v1/ts.html">
+          ts类说明
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/v1/assets/js/6.d5cbeccb.js" defer></script><script src="/v1/assets/js/app.e5f33892.js" defer></script>
+  </body>
+</html>

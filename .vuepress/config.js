@@ -10,14 +10,13 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: '初始化',
+        title: '快速上手',
         collapsable: false,
-
         children: [
-          ['/install','初始化安装']
+          ['/install','初始化安装'],
+          ['/use', '使用']
         ]
       },
-      // ['/install', '初始化安装'],
       
       {
         title: 'Api说明',
@@ -27,7 +26,14 @@ module.exports = {
           ['/ts', 'ts类说明'],
           ['/cli', 'kvl cli使用']
         ]
-      }
+      },
+      // {
+      //   title: '使用',
+      //   collapsable: false,
+      //   children: [
+      //     ['/use', '']
+      //   ]
+      // }
     ],
     sidebarDepth : 2
   }

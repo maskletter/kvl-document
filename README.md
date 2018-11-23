@@ -1,9 +1,15 @@
 
 
 
-## Kvl
+## Kvl(一个简单的终于express的封装框架)
 
-kvl利用typescript简单封装了express，typescript的数据强类型，弥补了js在类型方面的弱项。
+基于 `express` ，全面兼容 `express` 所有方法及中间键，两者可并行使用，使用 `typescript` 实现，加强js数据类型判断，统一的全局接口错误处理回调，采用优先加载方式，在服务启动时候，将所有路由加载进 `express.router` 当中，避免了在无用的代码加载。
+
+
+interceptor拦截器，是Kvl中一大特征，用于进行请求拦截，如验证登录等，他会再请求进入这个路由的时候执行。
+
+
+Validation验证器(功能待完善)，用于进行接口的参数验证，通过@config内的validation参数添加
 
 <br />
 

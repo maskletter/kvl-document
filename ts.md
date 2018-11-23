@@ -20,7 +20,7 @@ interface InitConfig{
 		port?: number
 	}
 
-	router?: Array<Function | { router: Function, enableInterceptor: boolean }>;
+	router?: Array<Function | { name: Function, enableInterceptor: boolean }>;
 
 	interceptor?: Array<Interceptor> | Interceptor
 
@@ -32,7 +32,7 @@ interface InitConfig{
 
 }
 ```
-## Kvl.Router 
+## Kvl.Router (@Router)
 
 <br>
 
@@ -48,13 +48,13 @@ interface Router{
 
 	interceptorLevel?: 1
 
-	router?: Array<Function | { router: Function, enableInterceptor: boolean }>;
+	router?: Array<Function | { name: Function, enableInterceptor: boolean }>;
 
 	interceptor?: Array<Interceptor> | Interceptor
 
 }
 ```
-## Kvl.RouterConfig 
+## Kvl.RouterConfig (@config)
 
 <br>
 
@@ -72,6 +72,20 @@ interface RouterConfig{
 	interceptorLevel?: 1 | 2 | 3,
 
 	validation?: Validation
+}
+```
+## Kvl.ValidationError 
+
+<br>
+
+```typescript
+interface ValidationError {
+	errorMsg: string,
+	required: boolean,
+	name: string,
+	regular: string,
+	value: string
+	type: 'string' | 'number' | 'boolean' | any
 }
 ```
 ## Kvl.Request 
@@ -102,7 +116,7 @@ interface Response {
 interface Validation {
 		
 	done?: any;
-
+	
 	disable?: any;
 
 	[argy: string]: {

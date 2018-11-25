@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Kvl框架API 接口文档',  // 设置网站标题
+  title: 'Kvl接口文档',  // 设置网站标题
   description : 'Adroi',
   base : '/kvl-document/dist/',
   themeConfig : {

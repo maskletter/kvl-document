@@ -28,6 +28,8 @@ interface InitConfig{
 
 	use?: Array<any>
 
+	postResolve?(request: kvl.Request, next:(data?: any) => void): void
+
 	throw?:(request: ExpressRequest, response: ExpressResponse, status: number, error: Error) => void;
 
 }
@@ -50,6 +52,8 @@ interface Router{
 
 	router?: Array<Function | { name: Function, enableInterceptor: boolean }>;
 
+	useThis?: boolean
+
 	interceptor?: Array<Interceptor> | Interceptor
 
 }
@@ -70,6 +74,8 @@ interface RouterConfig{
 	interceptor?: Array<Interceptor> | Interceptor
 
 	interceptorLevel?: 1 | 2 | 3,
+
+	postResolve?(request: kvl.Request, next:(data?: any) => void): void
 
 	validation?: Validation
 }

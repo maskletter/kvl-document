@@ -41,7 +41,7 @@ MainKvl({
 
 ## Router路由
 
-根据`typescript`的语法，利用装饰器功能，创建的一套路由规则，通过此功能可以创建多级路由，以及实现更清晰路的由路径。
+根据`typescript`的语法，利用装饰器功能，创建的一套路由规则，通过此功能可以创建多级路由，以及更层次性的路径。
 
 ```typescript
 import * as Kvl from 'kvl';
@@ -96,7 +96,7 @@ const { app, httpServer } = MainKvl({
 })
 ```
 
-## interceptor拦截器的使用
+## interceptor拦截器
 
 Kvl并没有改变太多的`express`使用，它主要是体现在了语法方面，充分使用了typescript语言特征，其中`interceptor`是kvl内为数不多的几个特征之一，interceptor可以用来进行接口请求控制，如，一些用户接口需要登录才能使用，就可以在这些接口上添加interceptor来进行拦截。
 
@@ -143,7 +143,7 @@ MainKvl({
 ```
 
 
-## validation验证器的使用
+## validation验证器
 
 接口请求中，必然会有很多的需要验证接受到的参数是否正确，以此kvl中内置了一个简易的验证器，用来验证参数是否符合规范
 (此接口还在调整中，不稳定，但是api会保持不变)
@@ -211,7 +211,7 @@ ValidationDone((error, response) => {
 
 ```
 
-## 静态服务器的使用
+## 静态服务器
 
 kvl的静态服务器是利用了express的内置中间件express.static创建的，更多详情可以参考serve-static库。
 
@@ -269,7 +269,7 @@ MainKvl({
 
 ```
 
-## 设置全局header
+## 全局header
 
 
 ```typescript
@@ -281,7 +281,7 @@ MainKvl({
 })
 ```
 
-## 配置https访问
+## https访问
 
 
 ```typescript
@@ -295,6 +295,63 @@ MainKvl({
 	},
 })
 ```
+
+
+## 配置this指向
+
+kvl内路由都是在class内的，因此默认的this指向的都是当前路由方法所在的class，可以通过配置手动禁止这种this指向
+
+
+```typescript
+MainKvl({
+	useThis: false			//默认为true，禁止全局的this指向
+})
+
+//当禁止了全局的this指向之后，此时如果你需要每个class内的路由方法this对象指向当前class，可以为路由配置useThis对象
+@Router({
+	useThis: true
+})
+class TextUseThis{
+
+}
+
+//注意，请勿为class路由类添加__private_void_process方法，此方法为kvl保留关键方法
+
+```
+
+
+## 自定义全局post解析方式
+
+众所周知，post的接口参数必须要进行一些操作，才能正确获取到，因此为了获取方便，kvl内部封装了一个简易的post参数解析方法，
+
+```typescript
+//此方法为系统内置post解析方式
+function DefaultPost(req, next){
+	const form = new formidable.IncomingForm();
+	form.parse(req, function(err, fields, files) {
+		if(err){
+			next();
+			return;
+		}
+      	next(fields);
+    });
+}
+
+//使用者可以通过配置全局参数来改变post的解析方式，代码示例如下
+MainKvl({
+	postResolve(req, next): void {
+		next({...})
+	}
+})
+
+//或者为某一个接口单独配置post解析
+@config({ url: '/hello', name: 'hello', type: ['get','post'], postResolve: function(req, next){} })
+
+//需要注意的是，kvl会把解析出来的参数，融合进req.query中
+
+```
+
+
 
 
 

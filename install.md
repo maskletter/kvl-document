@@ -1,10 +1,6 @@
 
 
 
-## Kvl
-
-kvl利用typescript简单封装了express，typescript的数据强类型，弥补了js在类型方面的弱项。
-
 <br />
 
 通过Npm 方式安装kvl

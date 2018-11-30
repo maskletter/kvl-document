@@ -13,12 +13,74 @@ Validation验证器(功能待完善)，用于进行接口的参数验证，通�
 
 <br />
 
+
+<table>	
+	<thead>
+		<tr>
+			<td align="center" width="20%">功能</td>
+			<td align="center" width="40%">状态</td>
+			<td align="center">说明</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td align="center">express</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">typescript</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">router</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">interceptor</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">validation</td>
+			<td align="center">待完善</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">生成api接口文档</td>
+			<td align="center">未开始</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">pm2</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">全局异常处理</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+		<tr>
+			<td align="center">环境配置</td>
+			<td align="center">已完成</td>
+			<td align="center">--</td>
+		</tr>
+	</tbody>
+
+
+</table>
+
+<br>
+
 通过Npm 方式安装kvl
 ```
 npm install kvl@latest -g
 ```
-
 <br>
+
 
 基础方式使用
 ```typescript

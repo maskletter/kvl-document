@@ -13,18 +13,29 @@ $ kvl init test-kvl
 
 ```typescript
 $ kvl dev
+//添加环境配置
+$ kvl dev --mode beta
+//从新编译代码并结束进程(主要是给serve用的)
+$ kvl dev --build
 ```
 
 ### 生产环境启动
 
 ```typescript
 $ kvl server
+//添加环境配置
+$ kvl server --mode beta
+//添加集群模式
+$ kvl server -i [cpu数量]
+//从新编译代码并启动
+$ kvl server --build
 ```
 
 ### 查看所有已启动的服务
 
 ```typescript
 $ kvl list
+$ kvl ls
 ```
 
 ### 查看具体服务信息

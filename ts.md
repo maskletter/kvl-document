@@ -20,7 +20,7 @@ interface InitConfig{
 		port?: number
 	}
 
-	router?: Array<Function | { name: Function, enableInterceptor: boolean }>;
+	router?: Array<Function | { name: Function, enable: boolean }>;
 
 	interceptor?: Array<Interceptor> | Interceptor
 
@@ -50,7 +50,7 @@ interface Router{
 
 	interceptorLevel?: 1
 
-	router?: Array<Function | { name: Function, enableInterceptor: boolean }>;
+	router?: Array<Function | { name: Function, enable: boolean }>;
 
 	useThis?: boolean
 

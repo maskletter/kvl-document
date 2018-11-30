@@ -69,7 +69,7 @@ class World{
 	/**
 	 * 说明下interceptor拦截器，也会应用到router数组的类下接口中，并延续继承
 	 * 如果不想那个类继承父类中的interceptor，可以这样设置
-	 * --> router: [ { router: World, enableInterceptor: true }, /*其他类*/ ]
+	 * --> router: [ { router: World, enable: true }, /*其他类*/ ]
 	 */
 	router: [ World ],
 	interceptor: function(req: Kvl.Request, res: Kvl.Response, next: Function){
@@ -233,6 +233,7 @@ Kvl并不是一个从头到尾全新的一个nodejs框架，他是简单的封�
 ```typescript
 
 import { MainKvl } from 'kvl';
+import { Request, Response } from 'express'
 //httpsServer仅限于配置了https才会返回
 const { app, httpServer /*, httpsServer*/ } = MainKvl({
 	port: 8080
@@ -242,7 +243,7 @@ const { app, httpServer /*, httpsServer*/ } = MainKvl({
  * app是express对象,httpServer是http对象, httpsServer是https对象
  */
 //app.use()
-app.get('/get-express', function(request: Kvl.Request, response: Kvl.Response) {
+app.get('/get-express', function(request: Request, response: Response) {
 
 })
 
@@ -352,6 +353,116 @@ MainKvl({
 ```
 
 
+## 运行环境配置
 
+kvl的自定义配置不需要在专门创建一个配置文件，你可以在package.json内的"kvl"中进行配置
+
+kvl内置了一个生成环境与测试环境
+
+```typescript
+	
+/**
+ * kvl_name是默认的环境变量
+ * 测试环境输出dev
+ * 生成环境输出build
+ */
+console.log(process.env.kvl_name)
+
+//为项目创建更多的环境配置，你可以在package.json的kvl.env内进行
+{
+	"kvl": {
+		"env": {
+			"dev": {
+				"status": "dev"
+			},
+			"build": {
+				"status": "build"
+			},
+			"beta": {
+				"status": "beta"
+			}
+		}
+	}
+}
+
+/**
+ * kvl dev会自动运行env内的dev设置的参数
+ * kvl build会自动运行env内的build设置的参数
+ */
+
+/**
+ * 你可以通过命令行启动时候添加参数来指定所需的环境
+ * 通过--mode，系统会自动寻找kvl.env下指定的参数载入进环境中
+ */
+$ kvl dev --mode beta
+
+
+```
+
+
+
+## require内的路径问题
+
+nodejs的require并不能设置引用的根路径，这就导致了ts内编写时候的路径寻找不到包文件
+```typescript
+/**
+ * 例如tsconfig.json里配置的baseUrl为【src】
+ */
+import Tool from 'src/tool'
+
+/**
+ * 这种方式转换成的js代码是-->require('src/tool')
+ * 当Nodejs运行之后，这种路径会无法解析，导致抛出异常
+ * 因此，为了更好的使用ts，避免深层目录的不断地【../】，kvl在ts转换时候适当的就该了require引用的文件路径
+ * 被转换成下例代码
+ */
+const Tool = reuqire(process.cwd()+"/dist/src/tool");
+//dist为用户在tsconfig里配置的outDir
+
+/**
+ * 如果你的项目是固定到一个地方，可以禁止process.cwd()方式动态获取，改为固定url路径
+ */
+const Tool = require("G:\/wwroot\/xxxx\/bbbbb\/demo\/dist\/src\/tool");
+
+/**
+ * 将路径引用从动态改为静态，只需要在package.json的kvl.staticRequire设置为true即可
+ */
+
+/**
+[import Tool from 'src/tool'] --------->  [require('src/tool')]  --------->  
+
+ 
+	[检查src目录下是否存在tool.js/tool目录/tool.ts]  ----->
+
+		如果存在，进行动态或者完整路径转换
+
+		如果不存在, 保存原状，让nodejs进行检查路径
+                    								
+ */
+
+
+
+```
+
+
+
+
+## 自定义PM2配置
+
+kvl的serve服务是利用了pm2的api，因此更多关于服务器配置问题，可以参考PM2.start的options
+
+```typescript
+
+//自定义的pm2声明在package.json的kvl.pm2内，如果创建了，会被自动加载进服务中
+
+{
+	"kvl": {
+	    "pm2": {
+	    	"name": "hello,world"
+	    }
+	}
+}
+
+```
 
 

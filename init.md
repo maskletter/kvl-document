@@ -21,7 +21,7 @@ MainKvl返回包含三个参数
 
 ```typescript
 
-import * as Kvl from 'kvl';
+import Kvl from 'kvl';
 
 const MainKvlConfig = {};
 
@@ -83,7 +83,7 @@ MainKvlConfig.throw = function(request: Kvl.Request, response: Kvl.Response, sta
 	type: 'get',					//请求的方式
 	interceptor: function(){},		//拦截器
 	interceptorLevel: 1				//是否拦截器，1为抛弃全局得拦截器,2为抛弃所在class得拦截器和全局得拦截器,3为抛弃所在class得拦截器，但是保留全局得拦截器
-	validation: {} 					数据效验器，验证数据是否正确
+	validation: {} 					//数据效验器，验证数据是否正确
 }) 
 
 ```

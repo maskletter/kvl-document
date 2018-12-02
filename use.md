@@ -4,7 +4,7 @@
 Kvl内置了一个错误处理回调，方便使用者在接口当初通过throw抛出异常，来设定统一的错误处理来返给用户
 
 ```typescript
-import * as Kvl from 'kvl';
+import Kvl from 'kvl';
 import { MainKvl, Router, config } from 'kvl';
 
 @Router({})
@@ -44,7 +44,7 @@ MainKvl({
 根据`typescript`的语法，利用装饰器功能，创建的一套路由规则，通过此功能可以创建多级路由，以及更层次性的路径。
 
 ```typescript
-import * as Kvl from 'kvl';
+import Kvl from 'kvl';
 import { MainKvl ,Router, config } from 'kvl';
 
 
@@ -111,7 +111,7 @@ interceptor可以添加到MainKvl，Router,config上，它可以是一个functio
 ```
 
 ```typescript
-import * as Kvl from 'kvl';
+import Kvl from 'kvl';
 import { MainKvl, Router, config } from 'kvl';
 
 @Router({
@@ -149,7 +149,7 @@ MainKvl({
 (此接口还在调整中，不稳定，但是api会保持不变)
 
 ```typescript
-import * as Kvl from 'kvl';
+import Kvl from 'kvl';
 import { MainKvl, Router, config } from 'kvl';
 
 /**
@@ -217,7 +217,7 @@ kvl的静态服务器是利用了express的内置中间件express.static创建�
 
 ```typescript
 //kvl配置静态服务器很简单，只需要设置一个static参数级可
-import * as Kvl from 'kvl';
+import Kvl from 'kvl';
 import { MainKvl } from 'kvl';
 MainKvl({
 	port: 8080,
@@ -449,7 +449,7 @@ const Tool = require("G:\/wwroot\/xxxx\/bbbbb\/demo\/dist\/src\/tool");
 
 ## 自定义PM2配置
 
-kvl的serve服务是利用了pm2的api，因此更多关于服务器配置问题，可以参考PM2.start的options
+kvl的serve服务是利用了pm2的api，因此更多关于服务器配置问题，可以参考PM2
 
 ```typescript
 

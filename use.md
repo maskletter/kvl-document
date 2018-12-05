@@ -226,50 +226,6 @@ MainKvl({
 
 ```
 
-## 与express并行使用
-
-Kvl并不是一个从头到尾全新的一个nodejs框架，他是简单的封装了express方法，添加了typescript支持，因此所有的express方法在kvl里都是可以被直接调用的。
-
-```typescript
-
-import { MainKvl } from 'kvl';
-import { Request, Response } from 'express'
-//httpsServer仅限于配置了https才会返回
-const { app, httpServer /*, httpsServer*/ } = MainKvl({
-	port: 8080
-})
-
-/**
- * app是express对象,httpServer是http对象, httpsServer是https对象
- */
-//app.use()
-app.get('/get-express', function(request: Request, response: Response) {
-
-})
-
-/**
- * 快速配置express的use
- */
-import * as session from 'express-session';
-import * as compression from 'compression';
-MainKvl({
-	//use内的数组对象会被填充到express的use中
-	use: [
-		//配置sessiobn
-		session({
-		  secret: 'keyboard cat',
-		  resave: false,
-		  saveUninitialized: true
-		}),
-		//配置gzip
-		compression()
-	]
-})
-
-// Kvl.Request和Kvl.Response拓展自express的Request和Kvl与Response
-
-```
-
 ## 全局header
 
 

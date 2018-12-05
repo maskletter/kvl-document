@@ -14,7 +14,8 @@ module.exports = {
         collapsable: false,
         children: [
           ['/install','初始化安装'],
-          ['/use', '使用']
+          ['/use', '使用'],
+          ['/express', 'express项目引入']
         ]
       },
       

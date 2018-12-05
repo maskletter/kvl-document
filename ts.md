@@ -145,20 +145,8 @@ interface ValidationDone {
 	(err: ValidationError, response: kvl.Response): void
 }
 ```
-## Kvl.ValidationError 
 
-<br>
 
-```typescript
-interface ValidationError {
-	errorMsg: string,
-	required: boolean,
-	name: string,
-	regular: string,
-	value: string
-	type: 'string' | 'number' | 'boolean' | any
-}
-```
 ## Kvl.Interceptor 
 
 <br>

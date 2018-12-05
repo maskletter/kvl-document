@@ -17,6 +17,8 @@ $ kvl dev
 $ kvl dev --mode beta
 //从新编译代码并结束进程(主要是给serve用的)
 $ kvl dev --build
+//生成一个url.json，里面存放所有路由路径
+$ kvl dev --url
 ```
 
 ### 生产环境启动
@@ -29,6 +31,8 @@ $ kvl server --mode beta
 $ kvl server -i [cpu数量]
 //从新编译代码并启动
 $ kvl server --build
+//生成一个url.json，里面存放所有路由路径
+$ kvl server --url
 ```
 
 ### 查看所有已启动的服务

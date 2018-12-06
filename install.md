@@ -4,7 +4,7 @@
 <br />
 
 通过Npm 方式安装kvl
-```
+```bash
 $ npm install kvl@latest -g
 ```
 

@@ -98,10 +98,10 @@ const { app, httpServer } = MainKvl({
 
 ## interceptor拦截器
 
-Kvl并没有改变太多的`express`使用，它主要是体现在了语法方面，充分使用了typescript语言特征，其中`interceptor`是kvl内为数不多的几个特征之一，interceptor可以用来进行接口请求控制，如，一些用户接口需要登录才能使用，就可以在这些接口上添加interceptor来进行拦截。
+interceptor可以用来进行接口请求控制，如，一些用户接口需要登录才能使用，就可以在这些接口上添加interceptor来进行拦截。
 
-interceptor可以添加到MainKvl，Router,config上，它可以是一个function，也可以是一个数组[function]。
-```
+interceptor可以添加到MainKvl，Router,config上，它可以是一个function，也可以是一个数组Interceptor[]。
+```txt
 当然，既然可以全局和类加，那势必就有一些不需要经过这些拦截器的请求，
 -- 给@Router的参数添加interceptorLevel: 1，表示该类下所有接口都不通过全局拦截器
 ----- 给@config的参数添加interceptorLevel：
@@ -208,12 +208,18 @@ ValidationDone((error, response) => {
 })
 
 
+/**
+ * 可以通过自定义验证器类型的方式，来丰富验证器中的type类型
+ */
+import { ValidationType } from 'kvl';
+//这里定义了一个价格类型
+ValidationType.price = /^[0-9]+([.]{1}[0-9]{1,2})?$/
 
 ```
 
 ## 静态服务器
 
-kvl的静态服务器是利用了express的内置中间件express.static创建的，更多详情可以参考serve-static库。
+ `kvl` 的静态服务器是利用了`express`的内置中间件`express.static`创建的，更多详情可以参考`serve-static`库。
 
 ```typescript
 //kvl配置静态服务器很简单，只需要设置一个static参数级可
@@ -226,8 +232,47 @@ MainKvl({
 
 ```
 
+
+## 文件上传
+
+ `kvl` 是使用formidable来解析的post，默认的是忽略全部文件的，因此你可以从新定义一个解析方法，来替换全局的方法
+
+```typescript
+//一个简单的demo
+const UploadRost = function (req: Kvl.Request, next: Function): void {
+	const form = new formidable.IncomingForm();
+	form.uploadDir='tmp'
+	form.parse(req, function(err: any, fields: any, files: any) {
+		if(err){
+			next();
+			return;
+		}
+		const extname: string = path.extname(files.upload.name);
+		const filename: any = new Date().getTime() + Math.random();
+		const oldpath: string = files.upload.path;
+		const newpath: string = path.resolve(process.cwd(), 'assets', filename+extname)
+
+		fs.rename(oldpath,newpath,function (err) {
+            if(err){
+                throw { status: 400, error: new Error('文件上传出错') };
+            }
+            fields.upload = newpath;
+	      	next(fields);
+        });
+    });
+}
+
+@config({ url: '/upload', name: '测试上传', type: 'post', postResolve: UploadRpost })
+private upload(req: Kvl.Request, res: Kvl.Response): void{
+	res.end('success')
+}
+
+```
+
+
 ## 全局header
 
+设置公共头部
 
 ```typescript
 MainKvl({
@@ -240,6 +285,7 @@ MainKvl({
 
 ## https访问
 
+配置htttps访问,如果添加了https对象，`kvl`会自动创建https服务器
 
 ```typescript
 MainKvl({
@@ -256,8 +302,7 @@ MainKvl({
 
 ## 配置this指向
 
-kvl内路由都是在class内的，因此默认的this指向的都是当前路由方法所在的class，可以通过配置手动禁止这种this指向
-
+虽然路由方法是在一个class中，但是因为代码运行原理导致路由内this的默认执行并非所在class，而是指向的路由的配置对象，所以kvl内通过apply方法使this指向了当前class，如果你想禁止指向class，而可以通过全局或者class内的useThis设置
 
 ```typescript
 MainKvl({
@@ -279,7 +324,7 @@ class TextUseThis{
 
 ## 自定义全局post解析方式
 
-众所周知，post的接口参数必须要进行一些操作，才能正确获取到，因此为了获取方便，kvl内部封装了一个简易的post参数解析方法，
+因为post的特殊，导致接收参数必须要进行一些操作，才能正确获取到，因此为了获取方便，kvl内部封装了一个简易的post参数解析方法，
 
 ```typescript
 //此方法为系统内置post解析方式
@@ -297,12 +342,19 @@ function DefaultPost(req, next){
 //使用者可以通过配置全局参数来改变post的解析方式，代码示例如下
 MainKvl({
 	postResolve(req, next): void {
-		next({...})
+		next({...arguments})
 	}
 })
 
 //或者为某一个接口单独配置post解析
-@config({ url: '/hello', name: 'hello', type: ['get','post'], postResolve: function(req, next){} })
+@config({ 
+	url: '/hello', 
+	name: 'hello', t
+	ype: ['get','post'], 
+	postResolve: function(req, next){ 
+		next({...arguments}) 
+	} 
+})
 
 //需要注意的是，kvl会把解析出来的参数，融合进req.query中
 
@@ -318,9 +370,11 @@ kvl内置了一个生成环境与测试环境
 ```typescript
 	
 /**
- * kvl_name是默认的环境变量
+ * process.env.kvl_name是默认的环境变量
  * 测试环境输出dev
- * 生成环境输出build
+ * 生成环境输出build,
+ * 
+ * 必须是通过kvl serve启动生成服务器时候，环境变量才会载入进去，直接通过pm2 start形式不会载入进kvl环境配置，需另行定义
  */
 console.log(process.env.kvl_name)
 
@@ -409,13 +463,29 @@ kvl的serve服务是利用了pm2的api，因此更多关于服务器配置问题
 
 ```typescript
 
-//自定义的pm2声明在package.json的kvl.pm2内，如果创建了，会被自动加载进服务中
+//自定义的pm2配置信息在package.json的kvl.pm2内，如果创建了，会被自动加载进服务中
 
 {
 	"kvl": {
 	    "pm2": {
 	    	"name": "hello,world"
 	    }
+	}
+}
+
+```
+
+
+
+## 关闭错误系统通知
+
+kvl的在dev模式下，编译出错时会向系统发出一个错误通知，以提醒用户，这个功能可以在package.json的kvl内设置禁止提醒
+
+```typescript
+
+{
+	"kvl": {
+	    "notice": false
 	}
 }
 

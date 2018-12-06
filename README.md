@@ -1,15 +1,33 @@
 
 
 
-## Kvl(一个简单的基于express的封装框架)
+## Kvl(一个基于express/ts的Nodejs框架)
 
-基于 `express` ，全面兼容 `express` 所有方法及中间件，两者可并行使用，使用 `typescript` 实现，加强js数据类型判断，统一的全局接口错误处理回调，采用优先加载方式，在服务启动时候，将所有路由加载进 `express.router` 当中，使接口在请求时候直接对接experess。
+基于 `express` ，兼容 `express` 所有方法及中间件，两者可并行使用，使用 `typescript` 实现，内置pm2基础服务调用，统一的全局接口错误处理回调，采用优先加载方式，在服务启动时候，将所有路由加载进 `express.router` 当中，使接口在请求时候直接对接`experess`。
+
+<a href="https://badge.fury.io/js/kvl" title="NPM Version Badge" rel="nofollow">
+   <img src="https://badge.fury.io/js/kvl.svg" alt="npm version" height="18">
+</a>
+<a href="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" title="Node Limitation" rel="nofollow">
+   <img src="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" alt="npm version" height="18">
+</a>
+
+<br>
+<br>
+
+---
+
+> kvl主要特征
+ * [Express(底层框架)](https://github.com/expressjs/express)
+ * [Typescript(开发语言)](http://www.typescriptlang.org/)
+ * [pm2(服务)](https://github.com/Unitech/pm2)
+ --- 
+ * [router(路由功能)](/use.html#router路由)
+ * [interceptor拦截器(用于进行请求拦截)](/use.html#interceptor拦截器)
+ * [Validation验证器(用于数据验证)](/use.html#validation验证器)
+ * [throw(全局接口异常)](/use.html#全局异常)
 
 
-interceptor拦截器，是Kvl中一大特征，用于进行请求拦截，如验证登录等，他会再请求进入这个路由的时候执行。
-
-
-Validation验证器(功能待完善)，用于进行接口的参数验证，通过@config内的validation参数添加
 
 <br />
 
@@ -82,21 +100,11 @@ Validation验证器(功能待完善)，用于进行接口的参数验证，通�
 <br>
 
 通过Npm 方式安装kvl
-```
+```bash
 $ npm install kvl@latest -g
 ```
 <br>
-因为npm全局安装时候会出现[devDependencies]内的包未安装的情况，所以有时候会进行手动初始化一下全局kvl
 
-```cmd
-$ kvl config init
-/**
- * macos/linux需要加sudo 命令安装
- * sudo kvl config init
- */
-```
-
-<br>
 
 
 #### 基础方式使用

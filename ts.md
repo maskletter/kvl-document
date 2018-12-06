@@ -15,9 +15,9 @@ interface InitConfig{
 	headers?: { [args: string]: string }
 
 	https?: {
-		key?: Buffer,
-		cert?: Buffer,
-		port?: number
+		key: Buffer,
+		cert: Buffer,
+		port: number
 	}
 
 	router?: Array<Function | { name: Function, enable: boolean }>;

@@ -233,43 +233,6 @@ MainKvl({
 ```
 
 
-## 文件上传
-
- `kvl` 是使用formidable来解析的post，默认的是忽略全部文件的，因此你可以从新定义一个解析方法，来替换全局的方法
-
-```typescript
-//一个简单的demo
-const UploadRost = function (req: Kvl.Request, next: Function): void {
-	const form = new formidable.IncomingForm();
-	form.uploadDir='tmp'
-	form.parse(req, function(err: any, fields: any, files: any) {
-		if(err){
-			next();
-			return;
-		}
-		const extname: string = path.extname(files.upload.name);
-		const filename: any = new Date().getTime() + Math.random();
-		const oldpath: string = files.upload.path;
-		const newpath: string = path.resolve(process.cwd(), 'assets', filename+extname)
-
-		fs.rename(oldpath,newpath,function (err) {
-            if(err){
-                throw { status: 400, error: new Error('文件上传出错') };
-            }
-            fields.upload = newpath;
-	      	next(fields);
-        });
-    });
-}
-
-@config({ url: '/upload', name: '测试上传', type: 'post', postResolve: UploadRpost })
-private upload(req: Kvl.Request, res: Kvl.Response): void{
-	res.end('success')
-}
-
-```
-
-
 ## 全局header
 
 设置公共头部
@@ -357,6 +320,43 @@ MainKvl({
 })
 
 //需要注意的是，kvl会把解析出来的参数，融合进req.query中
+
+```
+
+
+## 文件上传
+
+ `kvl` 是使用formidable来解析的post，默认的是忽略全部文件的，因此你可以从新定义一个解析方法，来替换全局的方法
+
+```typescript
+//一个简单的demo
+const UploadRost = function (req: Kvl.Request, next: Function): void {
+	const form = new formidable.IncomingForm();
+	form.uploadDir='tmp'
+	form.parse(req, function(err: any, fields: any, files: any) {
+		if(err){
+			next();
+			return;
+		}
+		const extname: string = path.extname(files.upload.name);
+		const filename: any = new Date().getTime() + Math.random();
+		const oldpath: string = files.upload.path;
+		const newpath: string = path.resolve(process.cwd(), 'assets', filename+extname)
+
+		fs.rename(oldpath,newpath,function (err) {
+            if(err){
+                throw { status: 400, error: new Error('文件上传出错') };
+            }
+            fields.upload = newpath;
+	      	next(fields);
+        });
+    });
+}
+
+@config({ url: '/upload', name: '测试上传', type: 'post', postResolve: UploadRpost })
+private upload(req: Kvl.Request, res: Kvl.Response): void{
+	res.end('success')
+}
 
 ```
 

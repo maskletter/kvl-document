@@ -38,10 +38,44 @@ MainKvl({
 
 
 ```
+## 状态管理
 
-## Router路由
+kvl内创建了一个数据共享服务(global)
 
-根据`typescript`的语法，利用装饰器功能，创建的一套路由规则，通过此功能可以创建多级路由，以及更层次性的路径。
+```typescript
+
+import Kvl from 'kvl';
+import { MainKvl ,Router, Global } from 'kvl';
+
+@Router({})
+class HelloRouter{
+
+	/**
+	 * 通过添加@Global()方式，可以为class内任意参数设置为全局对象
+	 * *需要注意的是，class必须是在useThis为true的情况下，才可以获取到全局对象
+	 */
+	@Global() private global: any;
+
+	onInit(): void {
+		console.log(this.global.name)
+	}
+
+}
+
+//你可以在初始化kvl时候为global复制
+MainKvl({
+	router: [],
+	global: {
+		name: 'tom'
+	}
+})
+
+
+```
+
+## @Router
+
+根据`typescript`的语法，利用装饰器功能，创建的一套路由规则，通过此功能可以创建出更层次性的路径。
 
 ```typescript
 import Kvl from 'kvl';
@@ -94,6 +128,62 @@ const { app, httpServer } = MainKvl({
 	port: 8080,
 	router: [ HelloWord ],
 })
+```
+## @config
+
+kvl仿照了一下其他语言的接口创建形式，通过@装饰符的形式来创建
+
+```typescript
+import Kvl from 'kvl';
+import { MainKvl ,Router, config } from 'kvl';
+
+@Router({})
+class HelloRouter{
+
+	@config({ type: 'get', url: '/hello' })
+	private hello(req: Kvl.Request, res: Kvl.Response): void {
+		res.end('<h1>Hello,world</h1>')
+	}
+
+	@config({
+		type: 'get',					//请求方式，也可以为["get","post","put"]形式创建多种请求
+		url: '/b',						//访问路径
+		name: '标注',					//为这个路由添加注释
+		postResolve: function(){},		//添加post解析方式(会替换全局)
+		validation： {}，				//数据拦截器
+		interceptor: [],				//添加拦截器，也可以为function(){}
+		interceptorLevel: 1				//拦截器级别
+	})
+	private b(req: Kvl.Request, res: Kvl.Response): void{
+		res.end('<h1>Hello,world</h1>')
+	}
+
+}
+
+
+
+```
+
+
+## onInit与onAfter
+
+kvl路由内置了两个事件,onInit与onAfter
+
+```typescript
+@Router({
+	url: '/test'
+}) 
+class World{
+	
+	onInit(): void {
+		//在组件初始化时候执行此方法
+	}
+
+	onAfter(): void {
+		//在class类路由加载完成之后执行此方法
+	}
+
+}
 ```
 
 ## interceptor拦截器
@@ -313,7 +403,7 @@ MainKvl({
 @config({ 
 	url: '/hello', 
 	name: 'hello', t
-	ype: ['get','post'], 
+	type: ['get','post'], 
 	postResolve: function(req, next){ 
 		next({...arguments}) 
 	} 

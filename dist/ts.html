@@ -7,7 +7,7 @@
     <meta name="description" content="Adroi">
     
     
-    <link rel="preload" href="/kvl-document/dist/assets/css/0.styles.c29aad66.css" as="style"><link rel="preload" href="/kvl-document/dist/assets/js/app.69cfffd6.js" as="script"><link rel="preload" href="/kvl-document/dist/assets/js/9.4c4c24a1.js" as="script"><link rel="prefetch" href="/kvl-document/dist/assets/js/10.b7838b7a.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/11.18e46dcc.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/2.546bd74f.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/3.32fbc1ba.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/4.3488f3fb.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/5.0abcc385.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/6.e619eb1b.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/7.d2f2bbfc.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/8.2d6a1f2a.js">
+    <link rel="preload" href="/kvl-document/dist/assets/css/0.styles.c29aad66.css" as="style"><link rel="preload" href="/kvl-document/dist/assets/js/app.d933fd21.js" as="script"><link rel="preload" href="/kvl-document/dist/assets/js/9.6d19e5df.js" as="script"><link rel="prefetch" href="/kvl-document/dist/assets/js/10.24515625.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/11.18e46dcc.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/2.546bd74f.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/3.32fbc1ba.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/4.3488f3fb.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/5.0abcc385.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/6.e619eb1b.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/7.d2f2bbfc.js"><link rel="prefetch" href="/kvl-document/dist/assets/js/8.2d6a1f2a.js">
     <link rel="stylesheet" href="/kvl-document/dist/assets/css/0.styles.c29aad66.css">
   </head>
   <body>
@@ -64,8 +64,6 @@
 
 	useThis<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">boolean</span>
 
-	interceptor<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span>Interceptor<span class="token operator">&gt;</span> <span class="token operator">|</span> Interceptor
-
 <span class="token punctuation">}</span>
 </code></pre></div><h2 id="kvl-routerconfig-config"><a href="#kvl-routerconfig-config" aria-hidden="true" class="header-anchor">#</a> Kvl.RouterConfig (@config)</h2> <br> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">interface</span> <span class="token class-name">RouterConfig</span><span class="token punctuation">{</span>
 	
@@ -96,6 +94,12 @@
 <span class="token punctuation">}</span>
 </code></pre></div><h2 id="kvl-response"><a href="#kvl-response" aria-hidden="true" class="header-anchor">#</a> Kvl.Response</h2> <br> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">interface</span> <span class="token class-name">Response</span> <span class="token punctuation">{</span>
 	<span class="token comment">//...继承自express</span>
+	<span class="token function">router</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> param<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+		query<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>argv<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token builtin">any</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+		body<span class="token operator">?</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>argv<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token builtin">any</span> <span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+	parentId<span class="token punctuation">:</span> <span class="token builtin">string</span>
+	id<span class="token punctuation">:</span> <span class="token builtin">string</span>
 <span class="token punctuation">}</span>
 </code></pre></div><h2 id="kvl-validation"><a href="#kvl-validation" aria-hidden="true" class="header-anchor">#</a> Kvl.Validation</h2> <br> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">interface</span> <span class="token class-name">Validation</span> <span class="token punctuation">{</span>
 		
@@ -128,6 +132,6 @@
         </a>
         →
       </span></p></div> </div> <!----></div></div>
-    <script src="/kvl-document/dist/assets/js/9.4c4c24a1.js" defer></script><script src="/kvl-document/dist/assets/js/app.69cfffd6.js" defer></script>
+    <script src="/kvl-document/dist/assets/js/9.6d19e5df.js" defer></script><script src="/kvl-document/dist/assets/js/app.d933fd21.js" defer></script>
   </body>
 </html>

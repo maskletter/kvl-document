@@ -54,8 +54,6 @@ interface Router{
 
 	useThis?: boolean
 
-	interceptor?: Array<Interceptor> | Interceptor
-
 }
 ```
 ## Kvl.RouterConfig (@config)
@@ -111,6 +109,12 @@ interface Request {
 ```typescript
 interface Response {
 	//...继承自express
+	router(path: string, param?: {
+		query?: { [argv: string]: any }, 
+		body?: { [argv: string]: any }
+	}): any;
+	parentId: string
+	id: string
 }
 ```
 

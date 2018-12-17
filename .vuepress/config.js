@@ -15,7 +15,8 @@ module.exports = {
         children: [
           ['/install','初始化安装'],
           ['/use', '使用'],
-          ['/express', 'express项目引入']
+          ['/express', 'express项目引入'],
+          ['/no-kvl','不想用kvl?']
         ]
       },
       

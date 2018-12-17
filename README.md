@@ -12,7 +12,7 @@
    <img src="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" alt="npm version" height="18">
 </a>
 
-<br>
+👉👉👉[演示项目链接](https://github.com/maskletter/kvl-demo)
 <br>
 
 ---
@@ -45,7 +45,7 @@
 		<tr>
 			<td align="center">express</td>
 			<td align="center">已完成</td>
-			<td align="center">kvl以express为基础，通过ts特征来强化路由功能</td>
+			<td align="center">以express为基础</td>
 		</tr>
 		<tr>
 			<td align="center">typescript</td>
@@ -55,17 +55,17 @@
 		<tr>
 			<td align="center">router</td>
 			<td align="center">已完成</td>
-			<td align="center">更清晰层次化的路由功能</td>
+			<td align="center">模块化路由功能</td>
 		</tr>
 		<tr>
 			<td align="center">interceptor</td>
 			<td align="center">已完成</td>
-			<td align="center">进行全局,类,接口性请求拦截</td>
+			<td align="center">拦截器</td>
 		</tr>
 		<tr>
 			<td align="center">validation</td>
 			<td align="center">待完善</td>
-			<td align="center">验证接口所接受数据是否为符合规定的数据</td>
+			<td align="center">数据验证器</td>
 		</tr>
 		<tr>
 			<td align="center">Api interface</td>
@@ -78,9 +78,9 @@
 			<td align="center">利用pm2官方api，实现简单的pm2服务</td>
 		</tr>
 		<tr>
-			<td align="center">全局异常处理</td>
+			<td align="center">throw</td>
 			<td align="center">已完成</td>
-			<td align="center">接收在接口函数内所有的throw出得异常，支持自定义状态码</td>
+			<td align="center">接口异常处理</td>
 		</tr>
 		<tr>
 			<td align="center">cli</td>
@@ -99,9 +99,12 @@
 
 <br>
 
-通过Npm 方式安装kvl
+通过Npm 方式安装kvl，并创建服务运行
 ```bash
 $ npm install kvl@latest -g
+$ kvl init hellworld
+$ cd hellworld
+$ kvl dev
 ```
 <br>
 
@@ -110,7 +113,7 @@ $ npm install kvl@latest -g
 #### 基础方式使用
 ```typescript
 
-import Kvl from 'kvl';
+import * as Kvl from 'kvl';
 import { MainKvl ,Router, config, ValidationDone } from 'kvl';
 @Router({}) 
 class HelloWord{

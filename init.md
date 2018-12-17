@@ -21,7 +21,7 @@ MainKvl返回包含三个参数
 
 ```typescript
 
-import Kvl from 'kvl';
+import * as Kvl from 'kvl';
 
 const MainKvlConfig = {};
 

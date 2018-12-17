@@ -14,7 +14,7 @@ $ npm install kvl@latest -g
 #### 基础方式使用
 ```typescript
 
-import Kvl from 'kvl';
+import * as Kvl from 'kvl';
 import { MainKvl ,Router, config, ValidationDone } from 'kvl';
 @Router({}) 
 class HelloWord{
@@ -36,7 +36,7 @@ const { app, httpServer } = MainKvl({
 #### 配合express使用
 ```typescript
 
-import Kvl from 'kvl';
+import * as Kvl from 'kvl';
 import { MainKvl ,Router, config, ValidationDone } from 'kvl';
 import * as express from 'express';
 const app = express();

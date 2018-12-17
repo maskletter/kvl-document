@@ -15,7 +15,7 @@ kvl并非一个全新的框架，而是内部引用了优秀的express框架，�
 
 ```typescript
 
-import Kvl from 'kvl';
+import * as Kvl from 'kvl';
 import { MainKvl ,Router, config, ValidationDone } from 'kvl';
 import * as express from 'express';
 import * as session from 'express-session';

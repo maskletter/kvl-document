@@ -20,15 +20,15 @@ interface InitConfig{
 		port: number
 	}
 
+	global?: any
+
 	router?: Array<Function | { name: Function, enable: boolean }>;
 
 	interceptor?: Array<Interceptor> | Interceptor
 
-	useThis?: boolean,
+	express?(app: Express.Application): void
 
-	use?: Array<any>
-
-	postResolve?(request: kvl.Request, next:(data?: any) => void): void
+	getData?:(request: kvl.Response) => void
 
 	throw?:(request: ExpressRequest, response: ExpressResponse, status: number, error: Error) => void;
 
@@ -48,11 +48,11 @@ interface Router{
 	
 	interceptor?: Array<Interceptor> | Interceptor
 
-	interceptorLevel?: 1
+	interceptorLevel?: 0 | 1 | 2 | 3 | 4
+
+	getData?:(request: kvl.Response) => void
 
 	router?: Array<Function | { name: Function, enable: boolean }>;
-
-	useThis?: boolean
 
 }
 ```
@@ -71,11 +71,13 @@ interface RouterConfig{
 
 	interceptor?: Array<Interceptor> | Interceptor
 
-	interceptorLevel?: 1 | 2 | 3,
+	interceptorLevel?: 0 | 1 | 2 | 3 | 4,,
 
-	postResolve?(request: kvl.Request, next:(data?: any) => void): void
+	getData?:(request: kvl.Response) => void
 
 	validation?: Validation
+
+	validType?: 'query' | 'body' | 'param' | 'all'
 }
 ```
 ## Kvl.ValidationError 
@@ -157,6 +159,28 @@ interface ValidationDone {
 
 ```typescript
 interface Interceptor{
-	(request: kvl.Request, response: kvl.Response, interceptor: Function): void
+	(request: kvl.Request, response: kvl.Response): void
 }
+```
+
+## Kvl.Injectable 
+
+<br>
+
+```typescript
+function Injectable(name: string): any
+```
+## Kvl.Global 
+
+<br>
+
+```typescript
+function Global(): any
+```
+## Kvl.data 
+
+<br>
+
+```typescript
+function data(): any
 ```

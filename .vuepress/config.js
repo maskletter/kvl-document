@@ -16,10 +16,17 @@ module.exports = {
           ['/install','初始化安装'],
           ['/use', '使用'],
           ['/express', 'express项目引入'],
-          ['/no-kvl','不想用kvl?']
+          ['/no-kvl','一个空得项目']
         ]
       },
-      
+      {
+        title: '插件',
+        collapsable: false,
+        children: [
+          ['/kvl-plugin', '内置插件'],
+          ['/new-plugin', '编写插件']
+        ]
+      },
       {
         title: 'Api说明',
         collapsable: false,

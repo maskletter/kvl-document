@@ -14,50 +14,24 @@ $ npm install kvl@latest -g
 #### 基础方式使用
 ```typescript
 
-import * as Kvl from 'kvl';
-import { MainKvl ,Router, config, ValidationDone } from 'kvl';
+import kvl from 'kvl';
+import { Main ,Router, config } from 'kvl';
 @Router({}) 
 class HelloWord{
 
 	private msg: string = 'Hello, world'
 
 	@config({ url: '/hello', name: 'hello', type: 'get' })
-	private hello(req: Kvl.Request, res: Kvl.Response): void {
+	private hello(req: kvl.Request, res: kvl.Response): void {
 		res.end(`<h1>${this.msg}</h1>`)
 	}
 
 }
-const { app, httpServer } = MainKvl({
+Main({
 	port: 8080,
 	router: [ HelloWord ],
-})
+}).then(({app,httpServer}) => {
+
+	})
 ```
 
-#### 配合express使用
-```typescript
-
-import * as Kvl from 'kvl';
-import { MainKvl ,Router, config, ValidationDone } from 'kvl';
-import * as express from 'express';
-const app = express();
-const serve = http.createServer(app);
-serve.listen(5544);
-
-@Router({}) 
-class HelloWord{
-
-	private msg: string = 'Hello, world'
-
-	@config({ url: '/hello', name: 'hello', type: 'get' })
-	private hello(req: Kvl.Request, res: Kvl.Response): void {
-		res.end(`<h1>${this.msg}</h1>`)
-	}
-
-}
-
-MainKvl(app, {
-	baseUrl: '/express',
-	router: [ HelloWord ]
-})
-
-```

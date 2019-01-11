@@ -3,7 +3,7 @@
 
 ## Kvl(一个基于express/ts的Nodejs框架)
 
-基于 `express` ，兼容 `express` 所有方法及中间件，两者可并行使用，使用 `typescript` 实现，内置pm2基础服务调用，统一的全局接口错误处理回调，采用优先加载方式，在服务启动时候，将所有路由加载进 `express.router` 当中，使接口在请求时候直接对接`experess`。
+基于 `express` ，兼容 `express` 所有方法及中间件，两者可并行使用，使用 `typescript` 实现，内置pm2基础服务调用，统一的全局接口错误处理回调。
 
 <a href="https://badge.fury.io/js/kvl" title="NPM Version Badge" rel="nofollow">
    <img src="https://badge.fury.io/js/kvl.svg" alt="npm version" height="18">
@@ -23,8 +23,8 @@
  * [pm2(服务)](https://github.com/Unitech/pm2)
  --- 
  * [router(路由功能)](/use.html#router路由)
- * [interceptor拦截器(用于进行请求拦截)](/use.html#interceptor拦截器)
- * [Validation验证器(用于数据验证)](/use.html#validation验证器)
+ * [interceptor拦截器(用于进行请求拦截)](/kvl-plugin.html#interceptor-拦截器)
+ * [Validation验证器(用于数据验证)](/kvl-plugin.html#validator-数据验证器)
  * [throw(全局接口异常)](/use.html#全局异常)
 
 
@@ -113,8 +113,8 @@ $ kvl dev
 #### 基础方式使用
 ```typescript
 
-import * as Kvl from 'kvl';
-import { MainKvl ,Router, config, ValidationDone } from 'kvl';
+import kvl from 'kvl';
+import { Main ,Router, config, ValidationDone } from 'kvl';
 @Router({}) 
 class HelloWord{
 
@@ -126,7 +126,7 @@ class HelloWord{
 	}
 
 }
-const { app, httpServer } = MainKvl({
+Main({
 	port: 8080,
 	router: [ HelloWord ],
 })

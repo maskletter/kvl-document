@@ -1,7 +1,13 @@
+
+
 module.exports = {
+  home: true,
   title: 'Kvl接口文档',  // 设置网站标题
-  description : 'Adroi',
+  description : '',
   base : '/kvl-document/dist/',
+  markdown: {
+    lineNumbers: true
+  },
   themeConfig : {
     nav : [
         { text: 'github', link: 'https://github.com/maskletter/Kvl' },
@@ -16,9 +22,12 @@ module.exports = {
           ['/install','初始化安装'],
           ['/use', '使用'],
           ['/express', 'express项目引入'],
-          ['/no-kvl','一个空得项目']
+          ['/no-kvl','一个空得项目'],
+          // ['/config', '环境配置']
         ]
       },
+      ['/config', '环境配置', 'cccccccc'],
+      // { title: 'Guide', collapsable: false, url: '/config' },
       {
         title: '插件',
         collapsable: false,

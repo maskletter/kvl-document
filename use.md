@@ -137,9 +137,28 @@ class HelloRouter{
 }
 
 
+```
+## Response.router
+
+扩展的一个express方法(注意:Main({},express)方式没有此方法),用于进行接口跳转
+
+```typescript
+
+@config({ type: 'get', url: '/hello' })
+private hello(req: kvl.Request, res: kvl.Response): void {
+	res.end('<h1>Hello,world</h1>')
+}
+
+@config({ type: 'get', url: '/world' })
+private hello(req: kvl.Request, res: kvl.Response): void {
+	//转到hello路径,
+	res.router('/hello', {
+        query: {  },
+        body: {}
+    })
+}
 
 ```
-
 
 ## 静态服务器
 

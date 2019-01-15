@@ -71,6 +71,28 @@ class hello {
 
 ```
 
+### @Router.interceptorLevel(拦截器级别)
+
+<ul>
+	<li>interceptorLevel: 0  (相当与默认规则)</li>
+	<li>interceptorLevel: 1  (抛弃全局得拦截器)</li>
+	<li>interceptorLevel: 2  (抛弃之前所有通过class继承到的拦截器)</li>
+	<li>interceptorLevel: 3  (抛弃父class的拦截器，但是保留全局得拦截器)</li>
+	<li>interceptorLevel: 4  (抛弃父class的拦截器，和全局拦截器)</li>
+</ul>
+
+### @config.interceptorLevel(拦截器级别)
+
+<ul>
+	<li>interceptorLevel: 0  (相当与默认规则)</li>
+	<li>interceptorLevel: 1  (抛弃全局得拦截器)</li>
+	<li>interceptorLevel: 2  (仅保留自身拦截器)</li>
+	<li>interceptorLevel: 3  (抛弃所在class拦截器，但是保留全局得拦截器)</li>
+	<li>interceptorLevel: 4  (抛弃全部class拦截器，但是保留全局得拦截器)</li>
+</ul>
+
+
+
 ## receive(数据接收器)
 
 kvl扩展了一个接收post等参数得方法：receive(通过formidable插件实现)。  

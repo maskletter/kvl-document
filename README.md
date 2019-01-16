@@ -1,7 +1,12 @@
 
-
-
 ## Kvl(一个基于express/ts的Nodejs框架)
+
+<br>
+<p align="center">
+   <img src='https://maskletter.github.io/kvl-document/dist/assets/img/icon.206a2395.svg' width='400' />
+</p>
+
+<br>
 
 基于 `express` ，兼容 `express` 所有方法及中间件，两者可并行使用，使用 `typescript` 实现，内置pm2基础服务调用，统一的全局接口错误处理回调。
 
@@ -17,7 +22,6 @@
 
 ---
 
-> kvl主要特征
  * [Express(底层框架)](https://github.com/expressjs/express)
  * [Typescript(开发语言)](http://www.typescriptlang.org/)
  * [pm2(服务)](https://github.com/Unitech/pm2)

@@ -1,23 +1,12 @@
 
 
 
-## Kvl(一个基于express/ts的Nodejs框架)
 
-基于 `express` ，兼容 `express` 所有方法及中间件，两者可并行使用，使用 `typescript` 实现，内置pm2基础服务调用，统一的全局接口错误处理回调。
+<!-- 👉👉👉[演示项目链接](https://github.com/maskletter/kvl-demo)
+<br> -->
 
-<a href="https://badge.fury.io/js/kvl" title="NPM Version Badge" rel="nofollow">
-   <img src="https://badge.fury.io/js/kvl.svg" alt="npm version" height="18">
-</a>
-<a href="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" title="Node Limitation" rel="nofollow">
-   <img src="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" alt="npm version" height="18">
-</a>
 
-👉👉👉[演示项目链接](https://github.com/maskletter/kvl-demo)
-<br>
 
----
-
-> kvl主要特征
  * [Express(底层框架)](https://github.com/expressjs/express)
  * [Typescript(开发语言)](http://www.typescriptlang.org/)
  * [pm2(服务)](https://github.com/Unitech/pm2)
@@ -99,35 +88,4 @@
 
 <br>
 
-通过Npm 方式安装kvl，并创建服务运行
-```bash
-$ npm install kvl@latest -g
-$ kvl init hellworld
-$ cd hellworld
-$ kvl dev
-```
-<br>
 
-
-
-#### 基础方式使用
-```typescript
-
-import kvl from 'kvl';
-import { Main ,Router, config, ValidationDone } from 'kvl';
-@Router({}) 
-class HelloWord{
-
-	private msg: string = 'Hello, world'
-
-	@config({ url: '/hello', name: 'hello', type: 'get' })
-	private hello(req: Kvl.Request, res: Kvl.Response): void {
-		res.end(`<h1>${this.msg}</h1>`)
-	}
-
-}
-Main({
-	port: 8080,
-	router: [ HelloWord ],
-})
-```

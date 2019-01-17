@@ -50,8 +50,6 @@ interface Router{
 
 	interceptorLevel?: 0 | 1 | 2 | 3 | 4
 
-	getData?:(request: kvl.Response) => void
-
 	router?: Array<Function | { name: Function, enable: boolean }>;
 
 }
@@ -94,6 +92,19 @@ interface ValidationError {
 	type: 'string' | 'number' | 'boolean' | any
 }
 ```
+## kvl.RouterTree
+
+```typescript
+interface RouterTree{
+	children: this[], 
+	class: Function,
+	name: string
+	parentId: string
+	config: kvl.Router,
+	id: string
+}
+```
+
 ## Kvl.Request 
 
 <br>
@@ -128,8 +139,6 @@ interface Response {
 interface Validation {
 		
 	done?: any;
-	
-	disable?: any;
 
 	[argy: string]: {
 		type?: 'string' | 'number' | 'boolean' | any,

@@ -13,6 +13,8 @@ import { Main ,Router, config, data } from 'kvl';
 	url: '/second'
 }) 
 class World{
+
+	@data private parentData: any;
 	
 	/**
 	 * 路由的访问路径类会继承父类的url
@@ -23,17 +25,27 @@ class World{
 		res.end(`<h1>world</h1>`)
 	}
 
+	private onInit(): void {
+		console.log(this.parentData);
+		//输出{ name: 'Hello,world' }
+	}
+
 }
 
 /**
- * 给子路由传递参数,
- * 	
- *  子路由可以通过@data() private parentData: any;方式获取到父路由传递进来得参数
- *
+ * 给子路由传递参数,	
+ * 子路由可以通过@data() private parentData: any;方式获取到父路由传递进来得参数
  */
 @Router({
+	url: '/first',
 	router: [ { class: HelloWorld, data: { name: 'Hello,world' } } ],
 })
+class HelloWord {
+	@config({ url: '/hello', name: 'hello', type: 'get' })
+	private hello(req: kvl.Request, res: kvl.Response): void {
+		res.end(`<h1>hello</h1>`)
+	}
+}
 
 
 Main({
@@ -57,7 +69,8 @@ class HelloRouter{
 	private hello(req: kvl.Request, res: kvl.Response): void {
 		res.end('<h1>Hello,world</h1>')
 	}
-
+	
+	//只有通过@config声明得方法才会转为接口
 	private b(req: kvl.Request, res: kvl.Response): void{
 		res.end('<h1>Hello,world</h1>')
 	}
@@ -114,12 +127,15 @@ class HellWorld{
 
 Main({
 	port: 8080,
-	//设置了全局错误处理，所有throw出的错误都会经过此回调，包含引代码异常引发的错误
+	/**
+	 * 设置了全局错误处理，所有接口内throw出的错误都会经过此回调
+	 * @param  {[type]} request:  kvl.Request   [description]
+	 * @param  {[type]} response: kvl.Response  [description]
+	 * @param  {[type]} status:   number        [description]
+	 * @param  {[type]} error:    Error         [description]
+	 */
 	throw(request: kvl.Request, response: kvl.Response, status: number, error: Error){
-		/**
-		 * status是状态码
-		 * error是错误信息
-		 */
+
 	    if(error.stack){
             response.status(status).send(`<pre>${error.stack}</pre>`)
         }else{

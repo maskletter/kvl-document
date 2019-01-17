@@ -4,8 +4,13 @@
 
 <!-- 👉👉👉[演示项目链接](https://github.com/maskletter/kvl-demo)
 <br> -->
-
-
+👉
+<a href="https://badge.fury.io/js/kvl" title="NPM Version Badge" rel="nofollow">
+   <img src="https://badge.fury.io/js/kvl.svg" alt="npm version" height="18">
+</a>
+<a href="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" title="Node Limitation" rel="nofollow">
+   <img src="https://img.shields.io/badge/node-%3E%3D6-brightgreen.svg" alt="npm version" height="18">
+</a>
 
  * [Express(底层框架)](https://github.com/expressjs/express)
  * [Typescript(开发语言)](http://www.typescriptlang.org/)

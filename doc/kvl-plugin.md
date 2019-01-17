@@ -226,7 +226,7 @@ interface kvl.config {
 
 ```
 
-## Injectable
+## Injectable(注入器)
 
 注入器，通过new Class方式，注入到不同router中
 
@@ -251,6 +251,7 @@ class hello extends kvl {
 	@Injectable('text-injectable') private textInjectable: any;
 	
 	onInit(){
+		//这里的this.textInjectable为UserInjectable实例化对象
 		console.log(this.textInjectable)
 	}
 
@@ -262,5 +263,7 @@ Main({
 	injectable: [ { class: UserInjectable, name: 'text-injectable', data: { name: 'tom' } } ]
 })
 
+//Function为注入得class对象,name为名字,data为class初始化时传进来的值
+const injectable = [ { class: Function, name: 'xx', data: {} } ]
 
 ```

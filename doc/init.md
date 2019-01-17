@@ -8,7 +8,7 @@ Kvl框架启动总入口，一个项目初始化一个kvl服务
 
 ```typescript
 
-import { Main ,Router, config, data, Global, Injectable } from 'kvl';
+import { Main ,Router, config, data, Global, Injectable, FindById, FindByName } from 'kvl';
 
 Main({
 	port: 8080,
@@ -44,22 +44,17 @@ Main参数说明
 ```typescript
 const MainConfig: Kvl.InitConfig = {
 	port: 8080,						//服务端口号
-	baseUrl: '',					//服务下所有路由根路径
-	router: [],						//路由class对象，@Router生成
+	baseUrl: '',					//服务下路由根路径
+	router: [],						//路由对象，由@Router生成
 	static: '',						//静态服务器，未设置则不启用
 	https: {},						//https参数，详见Https.createServer
 	interceptor: function(){},		//全局拦截器
-	throw: function(){} 			//处理服务接口内的错误
+	throw: function(){}, 			//处理服务接口内的错误
+	express: function(app){},		//app为express实例化对应,可以在次函数内为app添加各种中间件
+	getData: function(){},			//自定义post解析方法
+	plugin: [],						//加载插件
+	injectable: [],					//注入器
 }
-MainConfig.throw = function(request: Kvl.Request, response: Kvl.Response, status: number, error: Error){
-	/**
-	 * status为错误的状态码,默认为500，如果想自行设置可以通过->
-	 * 			throw { status: 400, error: new Error('发生了错误') }
-	 * 		--->来设置状态码
-	 * error为抛出的错误异常
-	 */
-}
-
 ```
 
 ## Router
@@ -83,10 +78,12 @@ MainConfig.throw = function(request: Kvl.Request, response: Kvl.Response, status
 @config({
 	name: '',						//请求的名字，区分定义使用
 	url: '',						//请求的url
-	type: 'get',					//请求的方式
+	type: 'get',					//请求的方式,也可以声明一个数组: ["get","post","put"]
 	interceptor: function(){},		//拦截器
 	interceptorLevel: 1				//拦截器级别
-	validation: {} 					//数据效验器，验证数据是否正确
+	validation: {}, 				//数据效验器，验证数据是否正确
+	validType: 'query',				//设置数据效验器类型('query' | 'body' | 'param' | 'all')
+	getData: function(){},			//自定义post解析方法
 }) 
 
 ```
@@ -122,7 +119,7 @@ class HelloWord{
 }
 
 Main({
-	global: { name: tom },
+	global: { name: "tom" },
 	router: [ HelloWord ]
 })
 
@@ -154,5 +151,33 @@ Main({
 	router: [ HelloWord ],
 	injectable: [ { class: UserInjectable, name: 'text-injectable', data: { name: 'tom' } } ]
 })
+
+```
+
+## FindByName
+
+用于获取kvl实例化的router对象
+
+```typescript
+//获取全部router实例
+const kvlRouters = FindByName();
+/**
+ * 搜索class.name是FindByName的实例
+ * FindByName不具有唯一性，会返回所有名字相同的实例
+ */
+const hello = FindByName('FindByName');
+
+```
+
+## FindById
+
+根据id获取kvl实例化的router对象
+
+```typescript
+
+/**
+ * 根据传进来的id搜寻相应的路由实例
+ */
+const hello = FindById('[router.id]');
 
 ```
